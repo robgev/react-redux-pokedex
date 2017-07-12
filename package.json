@@ -17,7 +17,8 @@
     "dev": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint --ext .jsx --ext .js src"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "babel-core": "6.21.0",
     "babel-eslint": "^7.2.0",
     "babel-loader": "6.2.10",
@@ -37,9 +38,7 @@
     "react-dom": "^15.4.2",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.3.1",
-    "webpack-dev-server": "^2.4.2"
-  },
-  "devDependencies": {
+    "webpack-dev-server": "^2.5.1"
   },
   "peerDependencies": {
     "react": "^15.4.2"
