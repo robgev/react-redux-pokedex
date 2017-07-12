@@ -14,11 +14,10 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "dev": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint --ext .jsx --ext .js src"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "6.21.0",
     "babel-eslint": "^7.2.0",
     "babel-loader": "6.2.10",
@@ -39,6 +38,8 @@
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.3.1",
     "webpack-dev-server": "^2.4.2"
+  },
+  "devDependencies": {
   },
   "peerDependencies": {
     "react": "^15.4.2"
