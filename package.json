@@ -14,7 +14,7 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "dev": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint --ext .jsx --ext .js src"
   },
   "dependencies": {},
