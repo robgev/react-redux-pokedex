@@ -1,12 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Filter extends Component {
-  handleChange = (e) => {
-    this.props.updateSearch(e.target.value);
-  };
-  render() {
-    return <input type="text" placeholder="Search" onChange={e => this.handleChange(e)} />;
-  }
-}
+const Filter = () => (
+  <input type="text" placeholder="Search" onChange={e => this.props.updateSearch(e.target.value)} />
+);
 
 export default Filter;

@@ -3,63 +3,47 @@ import React, { Component } from 'react';
 import Filter from './Filter';
 import CategoryTags from './CategoryTags';
 import List from './List';
+import reducer from '../reducer/reducer';
+import {filter} from '../actions/action';
+import {connect} from 'react-redux';
+
+const mapStateToProps = (state) => {
+  return {
+    list: state.list
+  }
+}
 
 class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      ind: '',
-      hide: 'default',
-      currentPage: 1,
-      pokemonsPerPage: 9,
       pageNumbers: [],
+      filter: '',
     };
   }
-  handleClick = (event) => {
-    this.setState({ currentPage: Number(event.target.id) });
-  };
+
   updateSearch = (filter) => {
     this.setState({ filter });
   };
-  filter = (list) => {
-    if (!this.state.filter) {
-      return list;
-    }
-    return list.filter(item =>
-    item.name.toLowerCase().indexOf(this.state.filter.toLowerCase()) >= 0);
-  };
-  filterByType = (name) => {
-    const { list } = this.props;
-    list.filter((item) => {
-      if (item.type !== [name]) {
-        this.setState({ hide: [name] });
-        return true;
-      }
-      return false;
-    });
-  };
 
   render() {
-    const { currentPage, pokemonsPerPage, hide, pageNumbers } = this.state;
-    const { list } = this.props;
-
-    const indexOfLastPokemon = currentPage * pokemonsPerPage;
-    const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-    const currentPokemons = list.slice(indexOfFirstPokemon, indexOfLastPokemon);
-
+    const pokemonsPerPage = 9;
+    const { pageNumbers } = this.state;
+    const { list, filter } = this.props;
+    filter(list);
+    console.log('list', this.props.list)
     for (let i = 1; i <= Math.ceil(list.length / pokemonsPerPage); i += 1) {
       pageNumbers.push(i);
     }
+
     return (
       <div>
         <Filter updateSearch={this.updateSearch} />
-        <CategoryTags filterByType={this.filterByType} />
+        <CategoryTags  />
         <div className="boxes">
-          {this.filter(currentPokemons).map((item, i) =>
+          {list.map((item, i) =>
             <div key={i} className="box">
-              {hide == item.type && <List item={item} />}
-              {hide == 'default' && <List item={item} />}
+               <List item={item} />
             </div>)
           }
         </div>
@@ -75,4 +59,4 @@ class Pagination extends Component {
   }
 }
 
-export default Pagination;
+export default connect(mapStateToProps, { filter })(Pagination);

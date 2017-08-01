@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {filterByType} from '../actions/action';
 
 class CategoryTags extends Component {
   render() {
@@ -14,4 +16,4 @@ class CategoryTags extends Component {
   }
 }
 
-export default CategoryTags;
+export default connect(null,{filterByType})(CategoryTags);
